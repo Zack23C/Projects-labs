@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+
+<style type="text/css">
+
+.contactCheck{
+	width: 50%;
+	float: left;
+	margin: 10px;
+	font-family: garamond;
+
+}	
+
+#totalInfo {
+
+display: block;
+overflow: hidden;
+}
+
+#overalform {
+
+      display: none;
+      width: 200px;
+}
+
+#overalform input {
+
+}
+
+
+form{
+	background-color: green;
+	width:500px;
+}
+
+#vaenziForm ul {
+
+	list-style: none;
+}
+
+</style>
+
+
+<body>
+
+<h3>Family log book </h3>
+
+<input type="button" id="open_button" value="New Contact">
+
+
+<div id="overalform">
+
+
+<form id="vaenziForm">
+<ul>
+<li>
+<p>Name:</p>
+ <input id="Names" type="text" placeholder="Name" required="ture">
+ </li>
+
+ <li>
+ <p>Phone Numbers:</p>
+ <input id="Phones" type="text" placeholder="Phones" required="true">
+ </li>
+
+ <li>
+ <p>E-mail Address:</p>
+ <input id="Email" type="text" placeholder="E-mail" required="true">
+ </li>
+
+ <li>
+ <p>Birthday:</p>
+ <input id="Birth" type="text" placeholder="yyyy-mm-dd" required="true"> 
+ </li>
+</ul>
+<input type="submit" id="subit" value="Save"></button>
+
+
+</form>
+
+</div>
+
+<div id="totalInfo">
+
+
+</div>
+
+
+<script type="text/javascript">
+
+var open = document.getElementById('open_button');
+var openDiv = document.getElementById('overalform');
+
+var familyArray = [];
+
+open.onclick = function (){
+
+openDiv.style.display = 'block';
+
+};
+
+document.getElementById('vaenziForm').addEventListener("submit",save);
+function save(event){
+	event.preventDefault( );
+
+    var munhu={
+		name :document.getElementById('Names').value,
+	    phone :document.getElementById('Phones').value,
+		mail :document.getElementById('Email').value,
+		birthday :document.getElementById('Birth').value,
+    };
+
+    if(localStorage.munhu === undefined){
+    	familyArray.unshift(munhu);
+		localStorage.munhu=JSON.stringify(familyArray);
+	}else{
+		var tempArray = JSON.parse(localStorage.munhu);
+		tempArray.unshift(munhu);
+		localStorage.munhu = JSON.stringify(tempArray);
+	}
+
+	output();
+ }
+
+
+
+
+function output(){
+	var outputBox = document.getElementById('totalInfo');
+
+	outputBox.innerHTML = "";
+
+	if(localStorage.munhu != undefined){
+		var munhuFromLocalStorage = JSON.parse(localStorage.munhu);
+		
+		for (var i = 0; i < munhuFromLocalStorage.length; i++) {
+			var contactCheck = document.createElement('div');
+			contactCheck.className = 'contactCheck';
+
+			var nameSpace = document.createElement('h1');
+			nameSpace.innerText = munhuFromLocalStorage[i].name;
+
+			var phoneSpace = document.createElement('p');
+			phoneSpace.innerText = munhuFromLocalStorage[i].phone;
+
+			var mailSpace = document.createElement('p');
+			mailSpace.innerText = munhuFromLocalStorage[i].mail;
+
+			var birthSpace = document.createElement('p');
+			birthSpace.innerText = munhuFromLocalStorage[i].birthday;
+
+
+
+			contactCheck.appendChild(nameSpace);
+			contactCheck.appendChild(phoneSpace);
+			contactCheck.appendChild(mailSpace);
+			contactCheck.appendChild(birthSpace);
+
+			outputBox.appendChild(contactCheck);
+		}
+	}
+}
+
+output(); 
+</script>
+
+</body>
+</html>

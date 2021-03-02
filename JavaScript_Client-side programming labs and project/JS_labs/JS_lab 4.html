@@ -1,0 +1,66 @@
+<html>
+<header>
+<style>
+#newsTicker{
+  width:500px
+  border:3px solid black;
+  background-color:;
+  }
+</style>
+</header>
+
+<body>
+<div id="newsTicker">
+  <h1 id="header"></h1>
+  <p id="summary"></p>
+  <img id="image" height="150" src="">
+  <div>
+  <a id="link">Read more</a>
+<script>
+var newsArray=[{
+  headline:"Worldpost",
+  summay:"Swedish Police Featured in flle shown By Fox News",
+  image:"https://i.imgur.com/BetQ9X9.jpg",
+  link:"https://goo.gl/mCosSb",
+  bgcolor:"#FFDB82",
+  },
+  {
+  headline:"Taste",
+  summay:"Whats for dinner:Beef larb is more than a funny-sounding word",
+  image:"https://i.imgur.com/FeLCAr.jpg",
+  link:"https://goo.gl/CfK7bf",
+  bgcolor:"#CFEFFC",
+  },
+  {
+  headline:"Entertainment",
+  summay:"Whats for dinner:Beef larb is more than a funny-sounding word",
+  image:"lab4-conerlious sagandira.html/ma.jpg",
+  link:"lab4-conerlious sagandira.html/ma.jpg",
+  bgcolor:"#EBEBDF",
+  }
+  ];
+  
+  var newsTicker=document.getElementById('newsTicker');
+  var header=document.getElementById('header');
+  var image=document.getElementById('image');
+  var summary=document.getElementById(summary);
+  var counter=document.getElementById('counter');
+
+var counter;
+counter=0; 
+ function change(){
+  if(counter<newsArray.length){
+    header.innerText=newsArray[counter].headline;
+	image.src=newsArray[counter].image;
+	newsTicker.style.backgroundColor=newsArray[counter].bgcolor;
+	summary.innerTextnewsArray[counter].summary;
+	counter++;
+	}else{
+	   counter=0;
+	   charge();
+	  }
+	}
+	setInterval(change,5000)
+</script>
+</body>
+</html>

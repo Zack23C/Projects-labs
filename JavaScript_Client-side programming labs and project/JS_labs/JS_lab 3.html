@@ -1,0 +1,72 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<style media="screen">
+		form{
+			background-color: green;
+			width: 200px;
+			text-align: center;
+			margin-top: -25px;
+
+		}
+		h1{
+			background-color: gray;
+			width: 200px;
+
+		}
+	</style>
+
+</head>
+
+<body>
+
+<h1>Starbucks Point of Sale</h1>
+
+<form id="form" onsubmit="event.preventDefault(); saler();">
+		<button type="submit">Add order</button></br></br>
+	First Name:</br>
+	<input id="personName" type="text" placeholder="personName"></br></br>Drink Name:</br>
+	<input id="refresherName" type="text" placeholder="refresherName"></br></br>Beverage Name:</br>
+	<input  id="beverageName" type="text" placeholder="beverageName"></br></br>sandwich Name:</br>
+	<input id="pastryName" type="text" placeholder="pastryName"></br></br>
+
+</form>
+
+<div id="resultBarista">
+
+</div>
+
+<script>
+
+var orderObject=function(personName,refresherName, beverageName,pastryName){
+	this.name = personName;
+	this.refresher = refresherName;
+	this.beverage = beverageName;
+	this.pastry = pastryName;
+};
+
+
+function saler(){
+   console.log('An order has been added');
+   var customer=document.getElementById('personName');
+   var refresher=document.getElementById('refresherName');
+   var beverage=document.getElementById('beverageName');
+   var pastrySandwich=document.getElementById('pastryName');
+   deliveryArr.push( new orderObject( personName.value, refresher.value, beverageName.value, pastryName.value ) );
+};
+
+
+function barrista(){
+	console.table(deliveryArr);
+	deliveryArr.pop();
+
+};
+
+console.log('done console');
+var deliveryArr = [];
+
+</script>
+
+</body>
+
+</html>
