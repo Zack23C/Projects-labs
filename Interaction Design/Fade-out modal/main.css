@@ -1,0 +1,252 @@
+* {
+	font-family: 'Roboto', sans-serif;
+	font-weight: 400;
+	-webkit-font-smoothing: antialiased;
+}
+*, *:before, *:after {
+	box-sizing: border-box;
+}
+html, body {
+	margin: 0;
+	padding: 0;
+	height: 100%;
+}
+
+h1, h3 {
+	font-weight: 700;
+	margin-left: 30%;
+}
+p {
+	line-height: 1.5;
+	margin-left: 40%;
+}
+#site-container {
+
+	padding: 33px 22px;
+	background-color: lightgray;
+	max-width: 800px;
+	margin: 0 auto;
+	filter: blur(0px);
+	transition: filter 0.2s ease-out;
+	-webkit-transition: -webkit-filter 0.2s ease-out;
+
+	transform: translateZ(0);
+	will-change: filter;
+}
+.modal-container {
+	margin: 0 auto;
+	padding: 22px;
+	background: ligthgray;
+		background: rgba(255,255,255,0.4);
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+    opacity: 0;
+	visibility: hidden;
+	transition: opacity 0.2s ease-out;
+	will-change: opacity;
+	transform: translateZ(0);
+}
+body.modal-showing #site-container {
+		filter: blur(10px);
+	}
+	body.modal-showing.closing #site-container {
+		filter: blur(0px);
+	}
+	body.modal-showing .modal-container {
+	opacity: 1;
+	visibility: visible;
+}
+body.modal-showing.closing .modal-container {
+	opacity: 0;
+}
+
+.modal-container .modal {
+	background: #fff;
+	padding: 22px 33px;
+	max-width: 550px;
+	width: 100%;
+	border-radius: 4px;
+
+	position: absolute;
+	top: 45%;
+	left: 50%;
+
+	transition: top 0.2s ease-out, transform 0.2s ease-out;
+
+	box-shadow: 0 22px 55px rgba(0,0,0,0.5);
+	transform: translate(-50%, -50%)
+				translateZ(0)
+				scale(0.9)
+				rotateX(60deg);
+
+	will-change: top, transform;
+}
+
+body.modal-showing .modal-container .modal {
+		top: 50%;
+		transform: translate(-50%, -50%) /* keep trick for correct positioning */
+				   translateZ(0) /* Getting the GPU to handle it - the old way */
+				   scale(1) /* zoom in to scale 1:1 */
+		   	   	   rotateX(0);
+		   	   	   background-color: lightgray;
+}
+body.modal-showing.closing .modal-container .modal {
+		top: 45%;
+		transform: translate(-50%, -50%) /* keep trick for correct positioning */
+				   translateZ(0) /* Getting the GPU to handle it - the old way */
+				   scale(0.9) /* zoom in to scale 1:1 */
+		   	   	   rotateX(60deg);
+}
+	.button {
+	display: inline-block;
+	line-height: 33px;
+	background: #000;
+	color: #fff;
+	font-weight: 400;
+	text-transform: uppercase;
+	padding: 0 18px;
+	font-size: 14px;
+	text-decoration: none;
+	border-radius: 2px;
+
+}
+.button.big {
+	font-size: 18px;
+	padding: 0 33px;
+	line-height: 55px;
+
+}
+.button {
+	display: inline-block;
+	line-height: 20px;
+	background: #000;
+	color: #fff;
+	background-color: #a00851;
+	font-weight: 400;
+	text-transform: uppercase;
+	padding: 10px;
+	font-size: 14px;
+	text-decoration: none;
+	border-radius: 2px;
+	margin-left: 40%;
+}
+label {
+	display: block;
+	font-size: 14px;
+}
+label + label {
+	margin-top: 20px;
+}
+input {
+	-webkit-appearance: none;
+	border: none;
+}
+input[type='text'],
+input[type='email'] ,
+select {
+	border: solid 1px #ddd;
+	padding: 10px 6px;
+	width: 100%;
+	display: block;
+	font-size: 16px;
+	line-height: 1;
+
+}
+.checkbox {
+	margin: 2px 0px 25px 0px;
+	width: 100%;
+	font-size: 16px;
+
+
+}
+input[type='submit'] {
+	background: blue;
+	padding: 10px;
+	margin: 10px 20px 10px 10px;
+	color: #fff;
+	line-height: 20px;
+	font-size: 16px;
+	display: inline-block;
+	margin-top: 28px;
+	border: 1px solid blue;
+}
+
+
+select {
+    height:41px;
+    line-height:41px;
+    border-radius: 0;
+    width: 20%;
+}
+
+.if-Yes {
+	max-height: 0;
+	overflow: hidden;
+	transition: max-height 0.2s ease-out;
+}
+.if-Yes.show {
+	max-height: 170px;
+}
+.if-Yes label:first-child {
+	margin-top: 18px;
+}
+
+*[required].error {
+	background-color: #f5e8e8;
+	border-color: #e30b00;
+	color: #e30b00;
+}
+
+.errormessage {
+	color: #e30b00;
+	line-height: 22px;
+	font-size: 13px;
+	font-weight: 500;
+
+	max-height: 0;
+	overflow: hidden;
+	transition: max-height 0.2s ease-out;
+}
+*[required].error + .errormessage {
+	max-height: 22px;
+}
+
+.hidden{
+
+	display: none;
+
+}
+
+
+#thanks {
+	background:ligthgray;
+	padding: 10px 13px;
+	height: 100%;
+	width: 100%;
+	border-radius: 4px;
+
+
+
+ /*for firefox moxilla*/
+   -moz-animation-duration: 1s;
+   -moz-animation-name: slidein;
+
+
+
+        }
+
+
+        @-moz-keyframes slidein {
+            from {
+                margin-left: 100%;
+                width: 250%;
+            }
+
+            to {
+                margin-left: 0%;
+                width: 100%;
+            }
+        }

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Form</title>
+		<meta charset="utf-8" />
+		<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900" rel="stylesheet"/>
+		<link href="css/main.css" type="text/css" rel="stylesheet" />
+        <script src="js/jquery-3.2.1.min.js"></script>
+        <script src="js/main.js"></script>
+        <script src="js/users.json"></script>
+	</head>
+	<body>
+		<div id="site-container">
+
+			<div class="site-header">
+				<h1>Welcome to Your Site Inc.</h1>
+				<p>Lorem ipsum arcu quam volutpat  pellentesque aliquam exercitation, justo lacus risus, feugiat feugiat, metus curabitur, curabitur fermentum eu pellentesque.  </p>
+			</div>
+
+			<div class="movesection step1">
+
+				<div class="step1">
+					<p class="login-button"><a href="#" class="linked">Log In</a></p>
+				</div>
+				<form class="login-form step2">
+
+					<label>
+						<h3>Userame</h3></br>
+						<input type="text" name="Name" class="theinputs" required="required" id="Names" />
+
+
+
+					</label>
+					<label>
+						<h3>Email Address</h3></br>
+						<input type="email" name="Email" class="theinputs" required="required" id="emails" />
+
+					</label>
+					<div class="errors">erro!,Try again!</div>
+					<input type="submit" class="linkedtonext login-button" value="Login">
+
+				</form>
+
+				<div class="after-login nomwe">
+					<p>You're logged in!</p>
+					<p>Now you can access all the cool content </p>
+					<p class="login-button"><a href="#" class="linkedtofinal">Go</a></p>
+				</div>
+
+			</div>
+
+		</div>
+	</body>
+</html>

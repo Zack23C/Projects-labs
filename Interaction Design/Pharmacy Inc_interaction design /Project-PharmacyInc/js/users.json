@@ -1,0 +1,15 @@
+[{
+	"firstname": "erik",
+	"lastname": "svensson",
+	"profession": "nur",
+	"svnumber": "null",
+	"city": "jonkoping",
+	"workplace": "pharmacyone"
+},{
+	"firstname": "elisabeth",
+	"lastname": "janson",
+	"profession": "doc",
+	"svnumber": "123456",
+	"city": "malmo",
+	"workplace": "pharmacytwo"
+}]

@@ -1,0 +1,226 @@
+* {
+	font-family: 'Roboto', sans-serif;
+	font-weight: 400;
+	-webkit-font-smoothing: antialiased;
+}
+*, *:before, *:after {
+	box-sizing: border-box;
+}
+html, body {
+	margin: 0 auto;
+	padding: 0;
+	height: 100%;
+	max-width: 500px;
+
+}
+.site-header{
+	border-bottom: 3px solid #9D9D9D;
+}
+h1, h3 {
+	font-weight: 700;
+}
+p {
+	line-height: 1.5;
+}
+
+#site-container {
+	max-width: 500px;
+	margin: 0 auto;
+	padding: 22px;
+}
+
+/* --------------------------- Forms */
+
+form {
+	margin: 0;
+	padding: 0;
+}
+
+/* Labels */
+label {
+	font-size: 14px;
+	display: block;
+	position: relative;
+}
+label + label {
+	margin-top: 18px;
+}
+label.select:after {
+	content: '';
+	display: block;
+	width: 18px;
+	height: 18px;
+	background: url('../img/arrow_down-icon.png') no-repeat center center;
+	background-size: 11px;
+
+	position: absolute;
+	right: 11px;
+	top: 33px;
+}
+
+/* Inputs */
+input[type='text']:-webkit-autofill,
+input[type='text']:-webkit-autofill:hover,
+input[type='text']:-webkit-autofill:focus,
+input[type='email']:-webkit-autofill,
+input[type='email']:-webkit-autofill:hover,
+input[type='email']:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus,
+input[type='text'],
+input[type='email'],
+select {
+	background-color: #fff;
+	border: solid 1px #ddd;
+	-webkit-box-shadow: 0 0 0px 1000px white inset;
+	border-radius: 4px;
+	padding: 10px 6px;
+	width: 100%;
+	display: block;
+	font-size: 16px;
+	line-height: 1;
+	margin-top: 6px;
+
+	color: #000;
+	transition: background-color 0.2s ease-out, color 0.2s ease-out, border-color 0.2s ease-out
+}
+select {
+    height:41px;
+    line-height:41px;
+    border-radius: 0;
+}
+
+/* Buttons */
+input[type='submit'] {
+	background: #000;
+	padding: 10px;
+	color: #fff;
+	font-size: 16px;
+	display: inline-block;
+	margin-top: 28px;
+}
+
+/* Student specific fields */
+.students-only {
+	max-height: 0;
+	overflow: hidden;
+	transition: max-height 0.2s ease-out;
+}
+.students-only.show {
+	max-height: 170px;
+}
+.students-only label:first-child {
+	margin-top: 18px;
+}
+
+/* Error messges */
+label.error *[required],
+label.exists #username {
+	background-color: #f5e8e8;
+	-webkit-box-shadow: 0 0 0px 1000px #f5e8e8 inset;
+	border-color: #e30b00;
+	color: #e30b00;
+}
+label.exists:after,
+label.error:after,
+label.not-exist:after {
+	content: '';
+	display: block;
+	width: 18px;
+	height: 18px;
+	background: url('../img/error-icon.png') no-repeat center center;
+	background-size: 18px;
+
+	position: absolute;
+	right: 11px;
+	top: 33px;
+}
+
+label.not-exist:after {
+	background-image: url('../img/success-icon.png');
+}
+
+.errormessage,
+.existsmessage {
+	color: #e30b00;
+	line-height: 22px;
+	font-size: 13px;
+	font-weight: 500;
+
+	overflow: hidden;
+	max-height: 0;
+	transition: max-height 0.2s ease-out;
+}
+
+label.error .errormessage,
+label.exists .existsmessage {
+	max-height: 22px;
+}
+
+#site-container{
+	overflow: hidden;
+}
+.step1{
+	float: left;
+	width:33.33%;
+}
+.login-button{
+	width: 150px;
+	height: 50px;
+	color: #ffffff;
+	background: #000000;
+	text-align: center;
+	font-size: 25px;
+	border-radius: 5px;
+	/*margin: 0 auto;*/
+}
+.linked{
+	text-decoration: none;
+	color:#ffffff;
+}
+.login-form{
+	width:33.33%;
+	float: left;
+	margin: 0 auto;	transition: left 0.2s ease-out, transform 0.2s ease-out;
+	will-change: left, transform;
+}
+.login-form .theinputs{
+	margin: 0;
+	width: 60%;
+	height: 30px;
+	border-radius: 5px;
+}
+.login-form h3{
+	margin: 0;
+}
+.after-login{
+	float: left;
+	width: 33.33%;
+}
+.linkedtonext{
+	text-decoration: none;
+	color:#ffffff;
+}
+.linkedtofinal{
+	text-decoration: none;
+	color:#ffffff;
+}
+.movesection{
+width: 316%;
+overflow: hidden;
+transition: transform 0.2s ease-out;
+}
+.movesection.step2 {
+	transform: translateX(-33.3333333%);
+}
+.movesection.nomwe {
+	transform: translateX(-66.6666%);
+}
+.errors{
+	display:none;
+	color:red;
+}
+.errorshowing{
+	display: block;
+}
