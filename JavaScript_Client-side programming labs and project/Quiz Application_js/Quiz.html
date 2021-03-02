@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head>
+        <!--The APP URL is http://projweb.ju.se/~saco1621/index.html-->
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="Web app">
+    <meta name="apple-mobile-web-app-title" content="Web app">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="theme-color" content="#2F3BA2">
+    <link rel="icon" sizes="192x192" href="images/touch/chrome-touch-icon-192x192.png"> 
+    <link rel="apple-touch-icon" href="images/touch/apple-touch-icon.png">
+    
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/apple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180x180.png">
+    <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
+    <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/png" href="/android-chrome-192x192.png" sizes="192x192">
+    <meta name="msapplication-square70x70logo" content="/smalltile.png" />
+    <meta name="msapplication-square150x150logo" content="/mediumtile.png" />
+    <meta name="msapplication-wide310x150logo" content="/widetile.png" />
+    <meta name="msapplication-square310x310logo" content="/largetile.png" />
+    <!-- Code above is from Johan Kohlin's lecture slides -->
+    
+    <title>Quiz</title>
+    <!-- This css code below is from mdui(https://github.com/zdhxiong/mdui/blob/master/dist/css/mdui.css) -->
+    <link rel="stylesheet" type="text/css" href="css/mdui.min.css">
+</head>
+<body>
+    <div class="mdui-toolbar mdui-color-indigo">
+        <span class="mdui-center">Jönköping Quiz App</span>
+    </div>
+    <div class="mdui-container-fluid">
+        <div class="mdui-row">
+            <div class="mdui-col-xs-6 mdui-col-offset-xs-3">
+              <h2 id="question">Question</h2>
+            </div>
+        </div>
+        <div class="mdui-row">
+            <div class="mdui-col-xs-6 mdui-col-offset-xs-3">
+              <form>
+                <div class="mdui-list">
+                  <label class="mdui-list-item mdui-ripple">
+                    <label class="mdui-radio">
+                        <input type="radio" name="group1" anwser="0" id="r1" class="anwsers"/>
+                        <i class="mdui-radio-icon"></i>
+                        <span id="anwser-1"></span>
+                    </label>
+                  </label>
+
+                  <label class="mdui-list-item mdui-ripple">
+                    <label class="mdui-radio">
+                        <input type="radio" name="group1" anwser="1" id="r2" class="anwsers"/>
+                        <i class="mdui-radio-icon"></i>
+                        <span id="anwser-2"></span>
+                    </label>
+                  </label>
+
+                  <label class="mdui-list-item mdui-ripple">
+                    <label class="mdui-radio">
+                        <input type="radio" name="group1" anwser="2" id="r3" class="anwsers"/>
+                        <i class="mdui-radio-icon"></i>
+                        <span id="anwser-3" anwser="3"></span>
+                    </label>
+                  </label>
+
+                 
+                  </div>
+                </form>
+            </div>
+        </div>
+        <div class="mdui-row">
+            <div class="mdui-col-xs-2 mdui-col-offset-xs-3">
+                <button class="mdui-btn mdui-btn-raised mdui-color-pink" id="save">Save</button>
+            </div>
+            <div class="mdui-col-xs-2 mdui-col-offset-xs-3">
+                <button class="mdui-btn mdui-btn-raised mdui-color-pink"  id="next"  disabled>Next</button>
+            </div>
+        </div>
+
+        <div class="mdui-row">
+            <div class="mdui-col-xs-6 mdui-col-offset-xs-3">
+                <h4>Score: <span id="score">0</span></h4>
+            </div>
+        </div>
+    </div>
+
+    <div class="mdui-dialog">
+      <div class="mdui-dialog-title">Your Final Score</div>
+      <div class="mdui-dialog-content">Well done!! your final score is <span id="finalscore"></span></div>
+    </div>
+
+    <script src="js/mdui.min.js"></script>
+    <script type="text/javascript">
+        var nowQuestion=0;
+        var score=0;
+        var questionCollection=[{Q:'Jönköping University is well know as a school of?',Select:['a)science','b)commerce','c)business'],correct:2},{Q:'How many lakes are in Jönköping?',Select:['a)0','b)4','c)2'],correct:1},{Q:'When was Jönköping granted its rights?',Select:['a)2017','b)1996','c)1284'],correct:2},{Q:'what is the name of the king who granted the rights of Jönköping?',Select:['a)Magnus Ladulås','b)Olof Skötkonung','c)Johannes Magnus'],correct:0},{Q:'which is the tallest building in Jönköping?',Select:['a) Jätten','b) Quality Hotel','c) pilgatan'],correct:0},{Q:'In which country is Jönköping?',Select:['a)Germany','b)Sweden','c)South Africa'],correct:1},{Q:'What are the most supported sports in Jönköping?',Select:['a)Rugby and swimming','b)soccer and hockey','c)Matial arts'],correct:1},{Q:'Which is the most spoken language in Jönköping?',Select:['a)French','b)Swedish','c)Xhosa'],correct:1},{Q:'At which side of the lake Vättern is Jönköping?',Select:['a)North','b)South','c)West'],correct:1},{Q:'How many airports are there in Jönjöping?',Select:['a)5','b)1','c)3'],correct:1}];
+        function showQuestion() {
+            document.querySelector('#question').innerText=questionCollection[nowQuestion].Q;
+            //this query selector code is originally from w3schools.com(https://www.w3schools.com/jsref/met_document_queryselector.asp)
+            document.querySelector('#anwser-1').innerText=questionCollection[nowQuestion].Select[0];
+            document.querySelector('#anwser-2').innerText=questionCollection[nowQuestion].Select[1];
+            document.querySelector('#anwser-3').innerText=questionCollection[nowQuestion].Select[2];
+           
+
+            Array.prototype.forEach.call(document.querySelectorAll('.anwsers'),(el) => {el.checked=false});
+            Array.prototype.forEach.call(document.querySelectorAll('.anwsers'),(el) => {el.removeAttribute('disabled')});
+            //this line of code above enables answers' selection to disable the previous act  to the current one  
+        }
+
+        function calcAnwser(){
+            var userAnwser=document.querySelector('.anwsers:checked');
+            if(userAnwser == null) {
+                //this snackbar messege is originally from mdui
+                mdui.snackbar({message: 'Please select.'});
+                return false;
+                
+            }else{ 
+                if(parseInt(userAnwser.getAttribute('anwser')) === questionCollection[nowQuestion].correct){
+                    score++;
+                    //the score is incremented is the answer is correct
+                }
+                return true;
+            }
+        }
+
+        function nextQuestion(){
+            nowQuestion ++;//increments the number of questions or to the next question continueously 
+            if(nowQuestion >= questionCollection.length){
+                //this snackbar messege is originally from mdui(https://www.mdui.org/docs/snackbar/demo2)
+                mdui.snackbar({message: 'This is the last question.'});
+                document.querySelector('#save').setAttribute('disabled','disabled');
+                document.querySelector('#next').setAttribute('disabled','disabled');
+                document.querySelector('#finalscore').innerText=score;//this shows the final score
+                var inst = new mdui.Dialog('.mdui-dialog', { modal:true,closeOnEsc:false });
+                inst.open();
+            }else{
+                //the question will not appear until the showQuestion function is called here .
+                showQuestion();
+            }
+        }
+
+        function showScore(){
+            document.querySelector('#score').innerText=score;
+        }
+
+        document.querySelector('#save').addEventListener('click',function(){
+            if(calcAnwser()){
+                //The calcAnswer runs first when the save button is clicked then showScore function will  immediately run after it has been called here
+                showScore();
+                Array.prototype.forEach.call(document.querySelectorAll('.anwsers'),(el) => {el.setAttribute('disabled','disabled')});
+                document.querySelector('#next').removeAttribute('disabled');
+                document.querySelector('#save').setAttribute('disabled','disabled');
+            }
+        });
+
+        document.querySelector('#next').addEventListener('click',function(){
+            document.querySelector('#next').setAttribute('disabled','disabled');
+            document.querySelector('#save').removeAttribute('disabled');
+            //Here this is where the nextQuestin function is being called to run when the page is reloaded.
+            nextQuestion();
+        });
+        //here is when the showQuestion function which shows the current or nowQuestion is being called to run 
+        showQuestion();
+    </script>
+</body>
+</html>
